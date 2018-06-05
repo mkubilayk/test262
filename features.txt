@@ -16,6 +16,10 @@ BigInt
 class-fields-public
 class-fields-private
 
+# Dynamic Import
+# https://github.com/tc39/proposal-dynamic-import
+dynamic-import
+
 # Promise.prototype.finally
 # https://github.com/tc39/proposal-promise-finally
 Promise.prototype.finally
