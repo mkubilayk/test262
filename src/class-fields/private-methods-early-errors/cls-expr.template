@@ -1,0 +1,15 @@
+// Copyright (C) 2018 Kubilay Kahveci. All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+
+/*---
+path: TODO
+name: TODO
+features: [class, class-methods-private]
+esid: TODO
+---*/
+
+throw "Test262: This statement should not be evaluated.";
+
+var C = class {
+  /*{ methods }*/
+}

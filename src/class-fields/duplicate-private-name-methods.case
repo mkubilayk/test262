@@ -1,0 +1,15 @@
+// Copyright (C) 2018 Kubilay Kahveci. All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+
+/*---
+desc: TODO
+template: private-methods-early-errors
+features: [class, class-methods-private]
+negative:
+  type: SyntaxError
+  phase: parse
+---*/
+
+//- methods
+#foo() {}
+#foo() {}
