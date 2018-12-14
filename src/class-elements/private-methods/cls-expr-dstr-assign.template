@@ -2,8 +2,8 @@
 // This code is governed by the BSD license found in the LICENSE file.
 
 /*---
-path: language/statements/class/private-methods/
-name: private method definitions in a class declaration
+path: language/expressions/class/private-methods/
+name: private method definitions in a class expression
 features: [class, class-methods-private]
 info: |
   ClassElement :
@@ -68,9 +68,10 @@ info: |
 esid: prod-MethodDefinition
 ---*/
 
-/*** template notes
- * method should always be #m
- * the template provides c.ref() for external reference
+/***
+ * template notes:
+ * 1. method should always be #m
+ * 2. the template provides c.ref/other.ref for external reference
  */
 
 function hasProp(obj, name, expected, msg) {
@@ -81,7 +82,7 @@ function hasProp(obj, name, expected, msg) {
   assert.sameValue(hasProperty, expected, msg);
 }
 
-class C {
+var { C = class {
   /*{ element }*/
 
   get ref() { return this.#m; }
@@ -94,7 +95,7 @@ class C {
 
     /*{ constructor }*/
   }
-}
+} } = {};
 
 var c = new C();
 var other = new C();
@@ -110,6 +111,5 @@ hasProp(c, '#m', false, 'method cannot be seen outside of the class');
  * ...
  */
 assert.sameValue(c.ref, other.ref, 'The method is defined once, and reused on every new instance');
-assert.sameValue(c.ref.name, '#m', 'error text')
 
 /*{ assertions }*/

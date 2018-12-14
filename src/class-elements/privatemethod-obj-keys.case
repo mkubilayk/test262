@@ -1,0 +1,22 @@
+// Copyright (C) 2018 Kubilay Kahveci (Bloomberg LP). All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+
+/*---
+desc: TODO
+info: TODO
+
+template: private-methods
+features: [class-methods-private, class-fields-private]
+---*/
+
+//- element
+#m() { return 42; }
+
+//- constructor
+assert(Object.keys(this).indexOf('#m') === -1, "should not contain private method");
+
+//- assertions
+assert(Object.keys(c).indexOf('#m') === -1, "should not contain private method");
+
+c['#m'] = 42;
+assert(Object.keys(c).indexOf('#m') !== -1, "should contain #m property");

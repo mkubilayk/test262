@@ -81,7 +81,7 @@ function hasProp(obj, name, expected, msg) {
   assert.sameValue(hasProperty, expected, msg);
 }
 
-class C {
+export default class C {
   /*{ element }*/
 
   get ref() { return this.#m; }

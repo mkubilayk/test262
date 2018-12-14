@@ -1,0 +1,105 @@
+function foo() {
+    return class {
+        ref() {
+            return this.#foo;
+        }
+
+        #foo() {
+
+        }
+    }
+};
+
+const a = new (foo());
+const b = new (foo());
+
+a.ref !== b.ref
+
+
+
+new A()
+
+class A extends B {
+    g() {
+        this.#h()
+    }
+    #h() { }
+}
+
+class B {
+    constructor() {
+        this.g()
+    }
+}
+
+class C extends A {
+    constructor() {
+        return {}
+    }
+}
+
+class A {
+    #foo() {}
+    constructor() {
+        this.#foo.call({})
+    }
+}
+
+/// Private methods can do super property access of public methods/properties, and this access uses the appropriate home object
+
+class A {
+    foo() {
+
+    }
+
+    #bar() {
+
+    }
+}
+
+class B extends A {
+    #foo() {
+        this.foo();
+
+        this.#bar(); //throws
+    }
+
+    bar() {
+        this.#foo();
+    }
+}
+
+new B().bar()
+
+
+// It's OK at parse-time to reference a static private method from an instance method, or vice versa, and you can make use of this at runtime with creative application of Function.prototype.call.
+
+class A {
+    foo() {
+        this.#g();
+    }
+}
+
+class B {
+    static #g() {
+
+    }
+}
+
+var a = new A();
+a.foo.call(B)
+
+// double check this with dan ^
+
+//  Complex contexts where private names are visible (use an assignment as the left operand of a comma expression as an easy mechanism to "leak" a function to access the private name)
+
+class A {
+    #foo()
+    constructor() {
+        var a = (temp = #foo), 0;
+    }
+}
+
+// ^ ask dan
+
+a[]

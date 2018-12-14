@@ -18,3 +18,14 @@ var C = $262.createRealm().global.eval('0, class {}');
 assert.throws(TypeError, function() {
   C();
 });
+
+
+class B {
+  static f() { this.#g(); }
+  static #g() { }
+}
+
+class A extends B {
+}
+
+A.f()

@@ -1,0 +1,18 @@
+// Copyright (C) 2018 Kubilay Kahveci (Bloomberg LP). All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+
+/*---
+desc: TODO
+info: TODO
+
+template: private-methods
+features: [class-methods-private, class-fields-private]
+---*/
+
+//- element
+set #m(value) { return 42; }
+
+//- constructor
+assert.throws(TypeError, () => { this.#m; });
+
+//- assertions

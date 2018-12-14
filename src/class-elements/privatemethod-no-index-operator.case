@@ -1,0 +1,22 @@
+// Copyright (C) 2018 Kubilay Kahveci (Bloomberg LP). All rights reserved.
+// This code is governed by the BSD license found in the LICENSE file.
+
+/*---
+desc: TODO
+info: TODO
+
+template: private-methods
+features: [class-methods-private, class-fields-private]
+---*/
+
+//- element
+#m() { return 42; }
+
+//- constructor
+assert.sameValue(this['#m'], undefined);
+
+//- assertions
+assert.sameValue(c['#m'], undefined);
+
+c['#m'] = 42;
+assert.sameValue(c['#m'], 42);
